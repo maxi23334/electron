@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Editor Pro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#e74c3c"/>
+          <path d="M12 10h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M15 20h10M15 24h7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1>PDF Editor Pro</h1>
+      </div>
+      <div class="header-info">
+        <span id="fileCount">0 archivos seleccionados</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Tools Grid -->
+      <section class="tools-section" id="toolsSection">
+        <h2>Herramientas PDF</h2>
+        <div class="tools-grid">
+          <div class="tool-card" data-tool="merge">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="8" width="15" height="20" rx="2" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                <rect x="25" y="8" width="15" height="20" rx="2" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                <path d="M16 35 L24 35 L24 28" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                <path d="M32 35 L24 35" stroke="#e74c3c" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3>Fusionar PDF</h3>
+            <p>Combina múltiples PDFs en uno solo</p>
+          </div>
+
+          <div class="tool-card" data-tool="split">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="15" y="8" width="18" height="24" rx="2" stroke="#3498db" stroke-width="2" fill="none"/>
+                <path d="M24 8 L24 32" stroke="#3498db" stroke-width="2" stroke-dasharray="2 2"/>
+                <path d="M20 40 L28 40" stroke="#3498db" stroke-width="2"/>
+                <path d="M24 40 L20 36 M24 40 L28 36" stroke="#3498db" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3>Dividir PDF</h3>
+            <p>Extrae páginas o divide tu PDF</p>
+          </div>
+
+          <div class="tool-card" data-tool="compress">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="12" y="8" width="24" height="32" rx="2" stroke="#2ecc71" stroke-width="2" fill="none"/>
+                <path d="M24 18 L24 30 M20 26 L24 30 L28 26" stroke="#2ecc71" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3>Comprimir PDF</h3>
+            <p>Reduce el tamaño de tus archivos</p>
+          </div>
+
+          <div class="tool-card" data-tool="rotate">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="15" y="15" width="18" height="18" rx="2" stroke="#9b59b6" stroke-width="2" fill="none"/>
+                <path d="M28 8 A12 12 0 0 1 40 20" stroke="#9b59b6" stroke-width="2" fill="none"/>
+                <path d="M40 20 L40 14 L34 14" stroke="#9b59b6" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3>Rotar PDF</h3>
+            <p>Gira tus páginas PDF</p>
+          </div>
+
+          <div class="tool-card" data-tool="extract">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="10" y="10" width="20" height="28" rx="2" stroke="#f39c12" stroke-width="2" fill="none"/>
+                <rect x="18" y="15" width="20" height="28" rx="2" stroke="#f39c12" stroke-width="2" fill="white"/>
+                <path d="M26 25 L26 33" stroke="#f39c12" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Extraer Páginas</h3>
+            <p>Extrae páginas específicas</p>
+          </div>
+
+          <div class="tool-card" data-tool="delete">
+            <div class="tool-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="15" y="12" width="18" height="24" rx="2" stroke="#e67e22" stroke-width="2" fill="none"/>
+                <path d="M21 20 L27 26 M27 20 L21 26" stroke="#e67e22" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Eliminar Páginas</h3>
+            <p>Elimina páginas no deseadas</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Area -->
+      <section class="work-area" id="workArea" style="display: none;">
+        <div class="work-header">
+          <button class="btn btn-back" id="backBtn">
+            <svg width="20" height="20" viewBox="0 0 20 20">
+              <path d="M12 4 L6 10 L12 16" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            Volver
+          </button>
+          <h2 id="workAreaTitle">Fusionar PDF</h2>
+          <div class="work-actions">
+            <button class="btn btn-secondary" id="selectFilesBtn">
+              <svg width="20" height="20" viewBox="0 0 20 20">
+                <path d="M10 4 L10 16 M4 10 L16 10" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Seleccionar Archivos
+            </button>
+            <button class="btn btn-primary" id="processBtn" disabled>
+              <svg width="20" height="20" viewBox="0 0 20 20">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M8 10 L10 12 L13 8" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+              Procesar
+            </button>
+          </div>
+        </div>
+
+        <!-- File List -->
+        <div class="file-list" id="fileList">
+          <div class="empty-state">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="20" y="15" width="40" height="50" rx="4" stroke="#ccc" stroke-width="3" fill="none"/>
+              <path d="M30 30 L50 30 M30 40 L50 40 M30 50 L50 50" stroke="#ccc" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <p>No hay archivos seleccionados</p>
+            <button class="btn btn-secondary" onclick="document.getElementById('selectFilesBtn').click()">
+              Seleccionar Archivos PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Page Selection (for split/extract/delete) -->
+        <div class="page-selection" id="pageSelection" style="display: none;">
+          <h3>Seleccionar Páginas</h3>
+          <div class="page-input-group">
+            <label>
+              <input type="radio" name="pageMode" value="all" checked>
+              Todas las páginas
+            </label>
+            <label>
+              <input type="radio" name="pageMode" value="range">
+              Rango de páginas
+            </label>
+            <label>
+              <input type="radio" name="pageMode" value="specific">
+              Páginas específicas
+            </label>
+          </div>
+          <div class="page-input" id="pageInput" style="display: none;">
+            <input type="text" id="pageRange" placeholder="Ej: 1-5, 8, 10-12">
+            <small>Ingresa el rango de páginas o números separados por comas</small>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p id="progressText">Procesando...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 PDF Editor Pro - Todas tus herramientas PDF en un solo lugar</p>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
